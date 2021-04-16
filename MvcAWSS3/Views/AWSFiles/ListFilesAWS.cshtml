@@ -1,0 +1,24 @@
+﻿@model List<string>
+
+<a asp-action="Index" asp-controller="AWSFiles">
+    Volver a Index
+</a>
+
+@if (Model != null)
+{
+<ul class="list-group">
+    @foreach (string file in Model)
+    {
+        <li class="list-group-item">
+            <a asp-action="FileAWS" asp-controller="AWSFiles" asp-route-fileName="@file" class="btn btn-info">View File @file</a>
+        </li>
+        <li class="list-group-item">
+            <a asp-action="DeleteFileAWS" asp-controller="AWSFiles" asp-route-fileName="@file" class="btn btn-info">Delete File @file</a>
+        </li>
+    }
+</ul>
+}
+else
+{
+    <h1 style="color:red">No hay ficheros en el bucket</h1>
+}
